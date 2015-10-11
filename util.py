@@ -49,10 +49,10 @@ def get_soup_from_url(url):
     #Check to see if file exists
     try:
         soup = pickle.load(open('{}'.format(out_pathfile), 'rb'))
-    except EOFError:
+    except:
         #If doesn't exist, try to get soup from page
         try:
-            soup = BeautifulSoup(requests.get(url).text)
+            soup = BeautifulSoup(requests.get(url).text, 'lxml')
             pickle.dump(soup, open('{}'.format(out_pathfile), 'wb'))
         except:
             pass
@@ -383,7 +383,7 @@ def get_movie_url_list(letter):
     url_list2 = []
 
     for url_1 in url_list1:
-        soupin = BeautifulSoup(requests.get(url_1).text)
+        soupin = BeautifulSoup(requests.get(url_1).text, 'lxml')
         movie_list_table = soupin.find(text = 'ALPHABETICAL INDEX').parent.parent.parent.parent.parent.parent
         movie_list = movie_list_table.find_all('a', href=re.compile('^/movies/\?id='))
         for movie in movie_list:
@@ -406,13 +406,13 @@ def update_movie_dictionary(file, url_list):
     '''
 
     try:
-        d = pickle.load(open('{}'.format('file'), 'rb'))
+        d = pickle.load(open('{}'.format(file), 'rb'))
     except:
         d = {}
 
     for url in url_list:
         d.update(get_movie_dictionary(url, d))
-        pickle.dump(d, open('{}'.format('file'), 'wb'))
+        pickle.dump(d, open('{}'.format(file), 'wb'))
 
 
 
