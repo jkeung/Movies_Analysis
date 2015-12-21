@@ -1,5 +1,5 @@
 # Movies Analysis
-Analysis of movies using data webscraped from boxofficemojo.com. 
+Analysis of movies using data webscraped from boxofficemojo.com. Parallelize scraping using Luigi!
 
 # Clone the repository
 
@@ -34,21 +34,17 @@ You are encouraged to use a python virtual environment using virtualenv and pip.
 * tornado - Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed
 * wheel - A built-package format for Python
 
-## Run Scraping and Analyzing Script
+## Run Parallelized Scraping Script via Spotify's Luigi Package
 
-Application can be run separately or all at once from a shell script.
+#### First, launch Luigi Daemon
 
-#### To run separately:
+``` $ luigid ```
+
+#### Next, run scraping script locally with 4 workers
 
 ```
-# get and clean data
-$ python clean_data/clean_util.py
-
-# create charts for analysis
-$ frameworkpython analysis/create_charts.py
+$ python scrape_movie.py --workers=4 --local-scheduler
 
 ```
 
-#### To run via shell script:
-
-```$ source mta_analysis.sh```
+View dependency tree and status of job at http://127.0.0.1:8082/
