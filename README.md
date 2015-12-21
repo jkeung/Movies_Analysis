@@ -34,26 +34,6 @@ You are encouraged to use a python virtual environment using virtualenv and pip.
 * tornado - Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed
 * wheel - A built-package format for Python
 
-
-If there are issues installing matplotlib create this file in <virtualenv_name>/bin/frameworkpython
-(http://matplotlib.org/faq/virtualenv_faq.html) 
-
-```
-#!/bin/bash
-
-# what real Python executable to use
-PYVER=2.7
-PATHTOPYTHON=/usr/local/bin/
-PYTHON=${PATHTOPYTHON}python${PYVER}
-
-# find the root of the virtualenv, it should be the parent of the dir this script is in
-ENV=`$PYTHON -c "import os; print os.path.abspath(os.path.join(os.path.dirname(\"$0\"), '..'))"`
-
-# now run Python with the virtualenv set as Python's HOME
-export PYTHONHOME=$ENV
-exec $PYTHON "$@"
-```
-
 ## Run Scraping and Analyzing Script
 
 Application can be run separately or all at once from a shell script.
