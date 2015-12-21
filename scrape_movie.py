@@ -2,6 +2,14 @@ import os
 import luigi
 import util
 
+
+class RunManyLetters(luigi.WrapperTask):
+	
+	def requires(self):
+		for myletter in '#ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+			yield GetDataForLetter(letter=myletter)
+
+
 class GetDataForLetter(luigi.Task):
 	letter = luigi.Parameter()
 
@@ -13,12 +21,6 @@ class GetDataForLetter(luigi.Task):
 	def output(self):
 		return luigi.LocalTarget(os.path.join(util.OUTPUTDIR, '{0}_{1}.p'.format(util.FILENAMETEMPLATE, self.letter)))
 
-
-class RunManyLetters(luigi.Task):
-	
-	def requires(self):
-		for myletter in '#ABCDEFGHIJKLMNOPQRSTUVWXYZ':
-			yield GetDataForLetter(letter=myletter)
 
 if __name__ == "__main__":
 	luigi.run(main_task_cls=RunManyLetters)

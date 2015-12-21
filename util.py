@@ -416,19 +416,19 @@ def update_movie_dictionary(file, url_list):
 
 
 
-def main():
+# def main():
 
-    script, letter = argv
-    start_time = time.time()
+#     script, letter = argv
+#     start_time = time.time()
 
-    create_dir(OUTPUTDIR)
+#     create_dir(OUTPUTDIR)
 
-    url_list = get_movie_url_list(letter)
-    output_path = os.path.join(OUTPUTDIR, '{0}_{1}.p'.format(FILENAMETEMPLATE, letter))
-    update_movie_dictionary(output_path, url_list)
+#     url_list = get_movie_url_list(letter)
+#     output_path = os.path.join(OUTPUTDIR, '{0}_{1}.p'.format(FILENAMETEMPLATE, letter))
+#     update_movie_dictionary(output_path, url_list)
 
-    print ("--- %s seconds ---\n") % (time.time() - start_time)
-    print ("Dictionary created successfully!")
+#     print ("--- %s seconds ---\n") % (time.time() - start_time)
+#     print ("Dictionary created successfully!")
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
