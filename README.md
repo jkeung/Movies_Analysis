@@ -1,5 +1,5 @@
 # Movies Analysis
-Analysis of movies using data webscraped from boxofficemojo.com. Parallelize scraping using Luigi!
+Analysis of movies using data webscraped from boxofficemojo.com. Build a data pipeline using Python Luigi Package!
 
 # Clone the repository
 
